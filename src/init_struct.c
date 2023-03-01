@@ -35,4 +35,5 @@ void init_struct(struct paint_t *paint, struct button_s *boutton)
     paint->color_pick = sfBlack;
     position_boutton(boutton);
     paint->image = sfImage_createFromColor(1366, 618, sfWhite);
+    paint->gomme = 0;
 }

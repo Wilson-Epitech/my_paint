@@ -7,10 +7,15 @@
 
 #include "../../include/my.h"
 
-sfColor color_pallet(int nb)
+sfColor color_pallet(int nb, struct paint_t *paint, int n)
 {
-    if (nb == 0)
+    if (nb == 0) {
+        if (n == 0)
+            paint->gomme = 1;
         return sfWhite;
+    }
+    if (n == 0)
+        paint->gomme = 0;
     if (nb == 1)
         return sfBlack;
     if (nb == 2)

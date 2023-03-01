@@ -17,6 +17,7 @@ struct paint_t {
     sfColor color_pick;
     sfVector2u win_size;
     sfImage *image;
+    int gomme;
 };
 
 struct button_s {

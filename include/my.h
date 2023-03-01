@@ -22,6 +22,6 @@ void button(struct button_s *boutton,
     struct paint_t *paint, sfEvent event, int i);
 
 void gui(struct paint_t *paint, sfEvent event);
-sfColor color_pallet(int nb);
+sfColor color_pallet(int nb, struct paint_t *paint, int n);
 
 #endif /* !paint_H_ */

@@ -7,6 +7,20 @@
 
 #include "../include/my.h"
 
+void pixel(sfEvent event, struct paint_t *paint, sfVector2i pos, int size)
+{
+    sfImage_setPixel(paint->image, pos.x, pos.y, paint->color_pick);
+    int x = pos.x;
+    int y = pos.y;
+    y -= size;
+    while (y < pos.y + size) {
+        for (x = pos.x - size; x < pos.x + size; x++) {
+            sfImage_setPixel(paint->image, x, y, paint->color_pick);
+        }
+        y++;
+    }
+}
+
 int paint_win(sfEvent event, struct paint_t *paint)
 {
     sfVector2i pos = sfMouse_getPositionRenderWindow(paint->window);
@@ -14,7 +28,10 @@ int paint_win(sfEvent event, struct paint_t *paint)
     size_win.y -= 100;
     if (sfMouse_isButtonPressed(0) && pos.x < size_win.x
     && pos.y < size_win.y) {
-        sfImage_setPixel(paint->image, pos.x, pos.y, paint->color_pick);
+        if (paint->gomme == 1)
+            pixel(event, paint, pos, 5);
+        if (paint->gomme == 0)
+            pixel(event, paint, pos, 2);
     }
     sfTexture *board_tex = sfTexture_createFromImage(paint->image, NULL);
     sfSprite *board = sfSprite_create();
