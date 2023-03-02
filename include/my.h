@@ -23,5 +23,10 @@ void button(struct button_s *boutton,
 
 void gui(struct paint_t *paint, sfEvent event);
 sfColor color_pallet(int nb, struct paint_t *paint, int n);
+void color_select(struct paint_t *paint, sfEvent event);
+void set_pen(struct paint_t *paint);
+void set_eraser(struct paint_t *paint);
+sfVector2i vec_u_to_i(float x, float y);
+void pen_size(struct paint_t *paint, sfEvent event);
 
 #endif /* !paint_H_ */

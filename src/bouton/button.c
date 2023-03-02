@@ -5,7 +5,7 @@
 ** button
 */
 
-#include "../include/my.h"
+#include "../../include/my.h"
 
 void rect_boutton(struct button_s *boutton, struct paint_t *paint, int i)
 {
@@ -35,22 +35,18 @@ int switch_press(int i)
 int is_touch(struct button_s *boutton,
     struct paint_t *paint,sfEvent event, int i)
 {
-    sfVector2i pos = sfMouse_getPositionRenderWindow(paint->window);
+    sfVector2f pos = paint->pos;
     sfVector2u windowSize = sfRenderWindow_getSize(paint->window);
-    int x = (paint->win_size.x / windowSize.x);
-    int y = (paint->win_size.y / windowSize.y);
-    int h = boutton->def_button[i][2] * y;
-    int l = boutton->def_button[i][3] * x;
+    int h = boutton->def_button[i][2];
+    int l = boutton->def_button[i][3];
     int press = boutton->def_button[i][5];
-    int pressed = 0;
-    if (event.type == sfEvtMouseButtonPressed)
-        pressed = 1;
-    if (pos.x * x <= boutton->def_button[i][0] + l &&
+    if (pos.x <= boutton->def_button[i][0] + l &&
     pos.x >= boutton->def_button[i][0] &&
-    pos.y * y <= boutton->def_button[i][1] + h &&
+    pos.y <= boutton->def_button[i][1] + h &&
     pos.y >= boutton->def_button[i][1]) {
-        if (pressed == 1) {
+        if (sfMouse_isButtonPressed(0)) {
             boutton->def_button[i][5] = switch_press(press);
+            return 2;
         }
         return 1;
     }
@@ -61,14 +57,17 @@ void button(struct button_s *boutton,
     struct paint_t *paint, sfEvent event, int i)
 {
     boutton->color = sfColor_fromRGBA(255, 255, 255, 200);
-    if (is_touch(boutton, paint, event, i) == 0 &&
-    boutton->def_button[i][5] == 0) {
+    int press = is_touch(boutton, paint, event, i);
+    if (press == 0 && boutton->def_button[i][5] == 0) {
         boutton->def_button[i][4] = 1;
         boutton->outcolor = sfBlack;
-    } else {
+    } else if (press == 1){
         boutton->def_button[i][4] = 2;
         boutton->outcolor = sfBlack;
         boutton->color = sfColor_fromRGBA(255, 255, 255, 255);
+    }
+    if (boutton->def_button[i][5] == 1) {
+        boutton->color = sfColor_fromRGBA(0, 255, 50, 255);
     }
     rect_boutton(boutton, paint, i);
 }

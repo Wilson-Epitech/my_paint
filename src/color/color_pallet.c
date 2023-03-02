@@ -7,6 +7,14 @@
 
 #include "../../include/my.h"
 
+sfColor color_pallet_pt2(int nb, struct paint_t *paint, int n)
+{
+    sfColor yanis = sfColor_fromRGB(185,138,131);
+    if (nb == 6)
+        return yanis;
+    return sfBlack;
+}
+
 sfColor color_pallet(int nb, struct paint_t *paint, int n)
 {
     if (nb == 0) {
@@ -26,5 +34,5 @@ sfColor color_pallet(int nb, struct paint_t *paint, int n)
         return sfBlue;
     if (nb == 5)
         return sfYellow;
-    return sfBlack;
+    return color_pallet_pt2(nb, paint, n);
 }

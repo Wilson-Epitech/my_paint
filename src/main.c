@@ -7,21 +7,51 @@
 
 #include "../include/my.h"
 
+void mouse(struct paint_t *paint, sfEvent event)
+{
+    sfVector2f pos = paint->pos;
+    sfVector2f size_win = paint->size_win;
+    if (pos.x < size_win.x
+    && pos.y < size_win.y && pos.x > 0 && pos.y > 100) {
+        sfRenderWindow_setMouseCursorVisible(paint->window, sfFalse);
+        paint->display_pixel == 0;
+    } else {
+        sfRenderWindow_setMouseCursorVisible(paint->window, sfTrue);
+        paint->display_pixel == 1;
+    }
+}
+
+void loop(struct paint_t *paint, struct button_s *boutton, sfEvent event)
+{
+    while (sfRenderWindow_isOpen(paint->window)) {
+        sfRenderWindow_clear(paint->window, sfWhite);
+        sfRenderWindow_pollEvent(paint->window, &event);
+        sfVector2i pos_mouse = sfMouse_getPositionRenderWindow(paint->window);
+        paint->pos = sfRenderWindow_mapPixelToCoords(paint->window,
+        pos_mouse, NULL);
+        sfVector2u size_win_base = sfRenderWindow_getSize(paint->window);
+        sfVector2i tmp = vec_u_to_i(size_win_base.x, size_win_base.y);
+        paint->size_win = sfRenderWindow_mapPixelToCoords(paint->window,
+        tmp, NULL);
+        mouse(paint, event);
+        paint_win(event, paint);
+        close_win(paint, event);
+        color_select(paint, event);
+        pen_size(paint, event);
+        for (int i = 0; i < 4; i++) {
+            button(boutton, paint, event, i);
+        }
+        sfRenderWindow_display(paint->window);
+    }
+}
+
 int main(int argc, char **argv)
 {
     struct paint_t *paint = malloc(sizeof(struct paint_t));
     struct button_s *boutton = malloc(sizeof(struct button_s));
     init_struct(paint, boutton);
     sfEvent event;
-    while (sfRenderWindow_isOpen(paint->window)) {
-        sfRenderWindow_clear(paint->window, sfWhite);
-        paint_win(event, paint);
-        sfRenderWindow_pollEvent(paint->window, &event);
-        close_win(paint, event);
-        gui(paint, event);
-        for (int i = 0; i < 4; i++) {
-            button(boutton, paint, event, i);
-        }
-        sfRenderWindow_display(paint->window);
-    }
+    loop(paint, boutton, event);
+    fopen("./backup/backup.jpg", "w");
+    sfImage_saveToFile(paint->image, "./backup/backup.jpg");
 }

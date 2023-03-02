@@ -26,7 +26,7 @@ void position_boutton(struct button_s *boutton)
 
 void init_struct(struct paint_t *paint, struct button_s *boutton)
 {
-    sfVideoMode mode = { 1366, 718 , 32 };
+    sfVideoMode mode = { 1366, 716 , 32 };
     paint->window = sfRenderWindow_create(mode, "my paint",
     sfResize | sfClose, NULL);
     paint->win_size = sfRenderWindow_getSize(paint->window);
@@ -34,6 +34,9 @@ void init_struct(struct paint_t *paint, struct button_s *boutton)
     paint->color_block = sfRectangleShape_create();
     paint->color_pick = sfBlack;
     position_boutton(boutton);
-    paint->image = sfImage_createFromColor(1366, 618, sfWhite);
+    paint->image = sfImage_createFromColor(1367, 718, sfWhite);
     paint->gomme = 0;
+    paint->size_pen = 2;
+    set_pen(paint);
+    set_eraser(paint);
 }

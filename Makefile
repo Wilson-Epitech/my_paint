@@ -6,7 +6,11 @@
 ##
 
 SRC	=	src/*.c	\
-	src/gui/*.c	\
+	src/color/*.c	\
+	src/sprite/*.c	\
+	src/pen_size/*.c	\
+	src/bouton/*.c	\
+	lib/*.c
 
 OBJ	=	$(SRC/.c=.o)
 

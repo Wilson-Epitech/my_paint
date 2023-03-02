@@ -7,14 +7,6 @@
 
 #include "../include/my.h"
 
-sfVector2f get_position(float x, float y)
-{
-    sfVector2f vector;
-    vector.x = x;
-    vector.y = y;
-    return (vector);
-}
-
 int close_win(struct paint_t *paint, sfEvent event)
 {
     if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue) {

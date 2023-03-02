@@ -18,6 +18,12 @@ struct paint_t {
     sfVector2u win_size;
     sfImage *image;
     int gomme;
+    sfSprite *pen;
+    sfSprite *eraser;
+    sfVector2f pos;
+    sfVector2f size_win;
+    float size_pen;
+    int display_pixel;
 };
 
 struct button_s {
