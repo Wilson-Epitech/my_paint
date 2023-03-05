@@ -36,7 +36,10 @@ void init_struct(struct paint_t *paint, struct button_s *boutton)
     position_boutton(boutton);
     paint->image = sfImage_createFromColor(1367, 718, sfWhite);
     paint->gomme = 0;
-    paint->size_pen = 2;
+    paint->size_pen = 20;
+    paint->size_eraser = 60;
+    paint->cercle_eraser = 1;
+    paint->cercle_pen = 1;
     set_pen(paint);
     set_eraser(paint);
 }

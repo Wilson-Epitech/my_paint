@@ -28,5 +28,10 @@ void set_pen(struct paint_t *paint);
 void set_eraser(struct paint_t *paint);
 sfVector2i vec_u_to_i(float x, float y);
 void pen_size(struct paint_t *paint, sfEvent event);
+void square_cercle(struct paint_t *paint, sfVector2f pos, float size);
+void draw_circle(struct paint_t *paint, int radius);
+int check_pixel(float y,float x, float size, struct paint_t *paint);
+void pixel(struct paint_t *paint, sfVector2f pos, float size);
+void hitbox_pixel(struct paint_t *paint, sfVector2f pos, float size);
 
 #endif /* !paint_H_ */

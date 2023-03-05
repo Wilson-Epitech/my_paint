@@ -6,10 +6,12 @@
 ##
 
 SRC	=	src/*.c	\
-	src/color/*.c	\
-	src/sprite/*.c	\
-	src/pen_size/*.c	\
+	src/dessin/color/*.c	\
+	src/dessin/shape/*.c	\
+	src/dessin/pen_size/*.c	\
+	src/dessin/draw/*.c	\
 	src/bouton/*.c	\
+	src/sprite/*.c	\
 	lib/*.c
 
 OBJ	=	$(SRC/.c=.o)

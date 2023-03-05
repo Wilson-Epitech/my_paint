@@ -23,6 +23,9 @@ struct paint_t {
     sfVector2f pos;
     sfVector2f size_win;
     float size_pen;
+    float size_eraser;
+    int cercle_pen;
+    int cercle_eraser;
     int display_pixel;
 };
 

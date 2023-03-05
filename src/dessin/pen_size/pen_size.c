@@ -5,13 +5,13 @@
 ** pen_size
 */
 
-#include "../../include/my.h"
+#include "../../../include/my.h"
 
-void size_select(struct paint_t *paint)
+void size_select(struct paint_t *paint, float size)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
     sfColor color = sfBlue;
-    int x = 620 + paint->size_pen;
+    int x = 620 + size;
     float y = 52;
     int l = 5;
     int h = 20;
@@ -51,12 +51,19 @@ void pen_size(struct paint_t *paint, sfEvent event)
 {
     rect_slider(paint);
     sfVector2f pos = paint->pos;
+    float size = paint->size_pen;
+    if (paint->gomme == 1)
+        size = paint->size_eraser;
     if (pos.x <= 975 && pos.x >= 600 &&
     pos.y <= 87 && pos.y >= 37 &&
     sfMouse_isButtonPressed(0)) {
-        paint->size_pen = pos.x - 620;
-        if (paint->size_pen < 0)
-            paint->size_pen = 1;
+        size = pos.x - 620;
+        if (size < 0)
+            size = 1;
     }
-    size_select(paint);
+    size_select(paint, size);
+    if (paint->gomme == 1)
+        paint->size_eraser = size;
+    else
+        paint->size_pen = size;
 }

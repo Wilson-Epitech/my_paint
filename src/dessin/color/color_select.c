@@ -5,7 +5,7 @@
 ** color_select
 */
 
-#include "../../include/my.h"
+#include "../../../include/my.h"
 
 sfRectangleShape *create_back(struct paint_t *paint, int hauteur, sfColor color)
 {
@@ -51,7 +51,7 @@ void color_select(struct paint_t *paint, sfEvent event)
     create_back(paint,100, sfColor_fromRGBA(147, 147, 255, 255));
     create_back(paint,25, sfColor_fromRGBA(147, 147, 147, 255));
     select_gomme(paint, event);
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i < 8; i++) {
         color_rect(paint,x, y, color_pallet(i, paint, 1));
         if (pos.x <= x + 20 && pos.x >= x &&
         pos.y <= y + 20 && pos.y >= y &&
