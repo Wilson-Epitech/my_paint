@@ -21,7 +21,9 @@ int paint_win(sfEvent event, struct paint_t *paint, struct pen_t *pen)
 {
     sfVector2f pos = paint->pos;
     sfVector2f size_win = paint->size_win;
-    float size = pen->size_pen / 10;
+    int size = pen->size_pen / 7;
+    if (size <= 0)
+        size = 1;
     if (pen->gomme == 1)
         size = pen->size_eraser / 5;
     if (sfMouse_isButtonPressed(0) && pos.x < size_win.x

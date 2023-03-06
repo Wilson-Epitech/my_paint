@@ -7,7 +7,7 @@
 
 #include "../../../include/my.h"
 
-void draw_circle_pixel(struct paint_t *paint, sfColor color, int x, int y)
+void draw_circle_pixel(struct paint_t *paint, sfColor color, int x, float y)
 {
     if (!check_pixel(paint->pos.y, paint->pos.x, y, paint))
         return;
@@ -21,11 +21,11 @@ void draw_circle_pixel(struct paint_t *paint, sfColor color, int x, int y)
     sfImage_setPixel(paint->image, paint->pos.x + x, paint->pos.y + y, color);
 }
 
-static void call_circle_pixel(struct paint_t *paint, sfColor color, int radius)
+static void call_circle_pixel(struct paint_t *paint, sfColor color, float rad)
 {
     int x = 0;
-    int y = radius;
-    int d = 3 - 2 * radius;
+    float y = rad;
+    float d = 3 - 2 * rad;
     while (x <= y) {
         draw_circle_pixel(paint, color, x, y);
         if (d < 0) {
@@ -41,13 +41,18 @@ static void call_circle_pixel(struct paint_t *paint, sfColor color, int radius)
 void draw_circle(struct paint_t *paint, struct pen_t *pen, int radius)
 {
     int x = 0;
+    if (radius == -1)
+        return;
     radius /= 1.5;
+    if (radius == 0)
+        radius = 1;
     int y = radius;
     int d = 3 - 2 * radius;
     sfColor color = pen->color_pick;
     pixel(paint, pen, radius + (radius / 2.6));
-    while (radius > 0) {
-        call_circle_pixel(paint, color, radius);
-        radius--;
+    float rad = radius;
+    while (rad > 0) {
+        call_circle_pixel(paint, color, rad);
+        rad -= 0.01;
     }
 }

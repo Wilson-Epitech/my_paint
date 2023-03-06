@@ -16,7 +16,7 @@ void init_pen(struct paint_t *paint, struct pen_t *pen);
 
 int paint_win(sfEvent event, struct paint_t *paint, struct pen_t *pen);
 
-void hitbox_pixel(struct paint_t *paint, struct pen_t *pen, float size);
+void hitbox_pixel(struct paint_t *paint, struct pen_t *pen, int size);
 
 int check_pixel(float y,float x, float size, struct paint_t *paint);
 sfColor color_pallet(int nb, struct pen_t *pen, int n);

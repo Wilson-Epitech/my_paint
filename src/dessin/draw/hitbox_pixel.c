@@ -7,15 +7,14 @@
 
 #include "../../../include/my.h"
 
-static void hitbox_square(struct pen_t *pen, struct paint_t *paint, float size)
+static void hitbox_square(struct pen_t *pen, struct paint_t *paint, int size)
 {
     sfColor border = pen->color_pick;
     sfVector2f pos = paint->pos;
     int size_border = 0;
     if (pen->gomme == 0) {
         sfSprite_setPosition(paint->pen,
-        get_position(pos.x - (8 - size / 2), pos.y - (40 + size / 2)));
-        sfRenderWindow_drawSprite(paint->window, paint->pen, 0);
+        get_position(pos.x - 8, pos.y - 39));
     }
     if (pen->gomme == 1) {
         border = sfBlack;
@@ -29,17 +28,17 @@ static void hitbox_square(struct pen_t *pen, struct paint_t *paint, float size)
     sfRectangleShape_setOutlineThickness(pixel,size_border);
     sfRectangleShape_setOutlineColor(pixel, border);
     sfRenderWindow_drawRectangleShape(paint->window, pixel, 0);
+    sfRenderWindow_drawSprite(paint->window, paint->pen, 0);
 }
 
-static void hitbox_cercle(struct paint_t *paint, struct pen_t *pen, float size)
+static void hitbox_cercle(struct paint_t *paint, struct pen_t *pen, int size)
 {
     sfColor border = pen->color_pick;
     sfVector2f pos = paint->pos;
     int size_border = 0;
     if (pen->gomme == 0) {
         sfSprite_setPosition(paint->pen,
-        get_position(pos.x - (8 - size / 2), pos.y - (40 + size / 2)));
-        sfRenderWindow_drawSprite(paint->window, paint->pen, 0);
+        get_position(pos.x - 8, pos.y - 38));
     }
     if (pen->gomme == 1) {
         border = sfBlack;
@@ -53,9 +52,10 @@ static void hitbox_cercle(struct paint_t *paint, struct pen_t *pen, float size)
     sfCircleShape_setOutlineThickness(pixel,size_border);
     sfCircleShape_setOutlineColor(pixel, border);
     sfRenderWindow_drawCircleShape(paint->window, pixel, 0);
+    sfRenderWindow_drawSprite(paint->window, paint->pen, 0);
 }
 
-void hitbox_pixel(struct paint_t *paint, struct pen_t *pen, float size)
+void hitbox_pixel(struct paint_t *paint, struct pen_t *pen, int size)
 {
     sfVector2f pos = paint->pos;
     int cercle = pen->cercle_pen;
