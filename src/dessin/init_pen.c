@@ -1,0 +1,17 @@
+/*
+** MY_PAINT PROJECT, 2023
+** my_paint
+** File description:
+** init_pen
+*/
+
+#include "../../include/my.h"
+
+void init_pen(struct paint_t *paint, struct pen_t *pen)
+{
+    pen->gomme = 0;
+    pen->size_pen = 20;
+    pen->size_eraser = 60;
+    pen->cercle_eraser = 1;
+    pen->cercle_pen = 1;
+}

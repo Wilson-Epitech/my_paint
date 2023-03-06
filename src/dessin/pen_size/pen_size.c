@@ -47,13 +47,13 @@ static void rect_slider(struct paint_t *paint)
     }
 }
 
-void pen_size(struct paint_t *paint, sfEvent event)
+void pen_size(struct paint_t *paint, struct pen_t *pen, sfEvent event)
 {
     rect_slider(paint);
     sfVector2f pos = paint->pos;
-    float size = paint->size_pen;
-    if (paint->gomme == 1)
-        size = paint->size_eraser;
+    float size = pen->size_pen;
+    if (pen->gomme == 1)
+        size = pen->size_eraser;
     if (pos.x <= 975 && pos.x >= 600 &&
     pos.y <= 87 && pos.y >= 37 &&
     sfMouse_isButtonPressed(0)) {
@@ -62,8 +62,8 @@ void pen_size(struct paint_t *paint, sfEvent event)
             size = 1;
     }
     size_select(paint, size);
-    if (paint->gomme == 1)
-        paint->size_eraser = size;
+    if (pen->gomme == 1)
+        pen->size_eraser = size;
     else
-        paint->size_pen = size;
+        pen->size_pen = size;
 }

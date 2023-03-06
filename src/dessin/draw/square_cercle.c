@@ -31,11 +31,12 @@ void pixel(struct paint_t *paint, sfVector2f pos, float size)
     }
 }
 
-void square_cercle(struct paint_t *paint, sfVector2f pos, float size)
+void square_cercle(struct paint_t *paint, struct pen_t *pen, float size)
 {
-    int cercle = paint->cercle_pen;
-    if (paint->gomme == 1) {
-        cercle = paint->cercle_eraser;
+    sfVector2f pos = paint->pos;
+    int cercle = pen->cercle_pen;
+    if (pen->gomme == 1) {
+        cercle = pen->cercle_eraser;
     }
     if (cercle == 1)
         draw_circle(paint, size);

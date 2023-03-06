@@ -28,14 +28,14 @@ void mouse(struct paint_t *paint, struct button_s *boutton, sfEvent event)
 
 void loop(struct paint_t *paint, struct button_s *boutton, sfEvent event)
 {
+    struct pen_t *pen = malloc(sizeof(struct pen_t));
+    init_pen(paint, pen);
     while (sfRenderWindow_isOpen(paint->window)) {
         sfRenderWindow_clear(paint->window, sfWhite);
         sfRenderWindow_pollEvent(paint->window, &event);
         mouse(paint, boutton, event);
-        paint_win(event, paint);
         close_win(paint, event);
-        color_select(paint, event);
-        pen_size(paint, event);
+        draw_all(paint, event, pen);
         for (int i = 0; i < 4; i++) {
             button(boutton, event, i);
         }

@@ -31,11 +31,6 @@ static void init_paint(struct paint_t *paint)
     paint->color_block = sfRectangleShape_create();
     paint->color_pick = sfBlack;
     paint->image = sfImage_createFromColor(1367, 718, sfWhite);
-    paint->gomme = 0;
-    paint->size_pen = 20;
-    paint->size_eraser = 60;
-    paint->cercle_eraser = 1;
-    paint->cercle_pen = 1;
     set_pen(paint);
     set_eraser(paint);
 }

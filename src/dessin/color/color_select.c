@@ -31,7 +31,7 @@ static void color_rect(struct paint_t *paint, int x, int y, sfColor color)
     sfRenderWindow_drawRectangleShape(paint->window, paint->color_block, 0);
 }
 
-static void select_gomme(struct paint_t *paint, sfEvent event)
+void select_gomme(struct paint_t *paint, struct pen_t *pen, sfEvent event)
 {
     sfVector2f pos = paint->pos;
     int x = 1050 - 7;
@@ -43,7 +43,7 @@ static void select_gomme(struct paint_t *paint, sfEvent event)
     if (pos.x <= x + 33 && pos.x >= x &&
     pos.y <= y + 33 && pos.y >= y &&
     event.type == sfEvtMouseButtonPressed) {
-        paint->color_pick = color_pallet(0, paint, 0);
+        paint->color_pick = color_pallet(0, pen, 0);
     }
 }
 
@@ -58,7 +58,7 @@ static void selected_color(struct paint_t *paint)
     sfRenderWindow_drawRectangleShape(paint->window, paint->color_block, 0);
 }
 
-void color_select(struct paint_t *paint, sfEvent event)
+void color_select(struct paint_t *paint, struct pen_t *pen, sfEvent event)
 {
     int x = 1130;
     int y = 30;
@@ -66,13 +66,13 @@ void color_select(struct paint_t *paint, sfEvent event)
 
     create_back(paint,100, sfColor_fromRGBA(147, 147, 255, 255));
     create_back(paint,25, sfColor_fromRGBA(147, 147, 147, 255));
-    select_gomme(paint, event);
+    select_gomme(paint, pen, event);
     for (int i = 1; i < 8; i++) {
-        color_rect(paint,x, y, color_pallet(i, paint, 1));
+        color_rect(paint,x, y, color_pallet(i, pen, 1));
         if (pos.x <= x + 20 && pos.x >= x &&
         pos.y <= y + 20 && pos.y >= y &&
         event.type == sfEvtMouseButtonPressed) {
-            paint->color_pick = color_pallet(i, paint, 0);
+            paint->color_pick = color_pallet(i, pen, 0);
         }
         x += 30;
     }

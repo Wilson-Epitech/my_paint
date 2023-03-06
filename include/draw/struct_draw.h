@@ -10,6 +10,14 @@
 
     #include "../include.h"
 
+struct pen_t {
+    int gomme;
+    float size_pen;
+    float size_eraser;
+    int cercle_pen;
+    int cercle_eraser;
+};
+
 struct paint_t {
     sfRenderWindow *window;
     sfRectangleShape *back;
@@ -17,16 +25,11 @@ struct paint_t {
     sfColor color_pick;
     sfVector2u win_size;
     sfImage *image;
-    int gomme;
-    sfSprite *pen;
-    sfSprite *eraser;
     sfVector2f pos;
     sfVector2f size_win;
-    float size_pen;
-    float size_eraser;
-    int cercle_pen;
-    int cercle_eraser;
     int display_pixel;
+    sfSprite *pen;
+    sfSprite *eraser;
 };
 
 #endif /* !STRUCT_DRAW_H_ */

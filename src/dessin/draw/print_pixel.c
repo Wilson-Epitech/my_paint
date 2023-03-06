@@ -17,19 +17,19 @@ static void display_draw(struct paint_t *paint)
     sfSprite_destroy(board);
 }
 
-int paint_win(sfEvent event, struct paint_t *paint)
+int paint_win(sfEvent event, struct paint_t *paint, struct pen_t *pen)
 {
     sfVector2f pos = paint->pos;
     sfVector2f size_win = paint->size_win;
-    float size = paint->size_pen / 10;
-    if (paint->gomme == 1)
-        size = paint->size_eraser / 5;
+    float size = pen->size_pen / 10;
+    if (pen->gomme == 1)
+        size = pen->size_eraser / 5;
     if (sfMouse_isButtonPressed(0) && pos.x < size_win.x
     && pos.y < size_win.y && pos.x > 0 && pos.y > 100) {
-        square_cercle(paint, pos, size);
+        square_cercle(paint, pen, size);
     }
     display_draw(paint);
     if (pos.x < size_win.x
     && pos.y < size_win.y && pos.x > 0 && pos.y > 100)
-        hitbox_pixel(paint, pos, size);
+        hitbox_pixel(paint, pen, size);
 }

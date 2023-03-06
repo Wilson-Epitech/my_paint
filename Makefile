@@ -6,6 +6,7 @@
 ##
 
 SRC	=	src/*.c	\
+	src/dessin/*.c	\
 	src/dessin/color/*.c	\
 	src/dessin/shape/*.c	\
 	src/dessin/pen_size/*.c	\
