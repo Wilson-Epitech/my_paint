@@ -7,7 +7,7 @@
 
 #include "../../../include/my.h"
 
-void box(struct paint_t *paint, int y, int select, sfEvent event)
+static void box(struct paint_t *paint, int y, int select, sfEvent event)
 {
     int x = 1090 - 7;
     sfRectangleShape *box = sfRectangleShape_create();

@@ -27,5 +27,7 @@ void pen_size(struct paint_t *paint, struct pen_t *pen, sfEvent event);
 void square_cercle(struct paint_t *paint, struct pen_t *pen, float size);
 void draw_circle(struct paint_t *paint, struct pen_t *pen, int radius);
 void pixel(struct paint_t *paint, struct pen_t *pen, float size);
+void select_type(struct paint_t *paint, struct pen_t *pen, sfEvent event);
+void pen_shape(struct paint_t *paint, struct pen_t *pen, sfEvent event);
 
 #endif /* !PROTO_DRAW_H_ */

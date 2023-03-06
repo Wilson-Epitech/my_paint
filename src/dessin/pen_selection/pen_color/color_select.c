@@ -55,6 +55,7 @@ void color_select(struct paint_t *paint, struct pen_t *pen, sfEvent event)
     create_back(paint,100, sfColor_fromRGBA(147, 147, 255, 255));
     create_back(paint,25, sfColor_fromRGBA(147, 147, 147, 255));
     select_type(paint, pen, event);
+    pen_shape(paint, pen, event);
     for (int i = 1; i < 8; i++) {
         color_rect(paint,x, i, pen);
         if (pos.x <= x + 20 && pos.x >= x &&
