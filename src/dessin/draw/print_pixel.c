@@ -7,6 +7,16 @@
 
 #include "../../../include/my.h"
 
+static void display_draw(struct paint_t *paint)
+{
+    sfTexture *text_bord = sfTexture_createFromImage(paint->image, NULL);
+    sfSprite *board = sfSprite_create();
+    sfSprite_setTexture(board,text_bord , 0);
+    sfRenderWindow_drawSprite(paint->window, board, NULL);
+    sfTexture_destroy(text_bord);
+    sfSprite_destroy(board);
+}
+
 int paint_win(sfEvent event, struct paint_t *paint)
 {
     sfVector2f pos = paint->pos;
@@ -18,12 +28,7 @@ int paint_win(sfEvent event, struct paint_t *paint)
     && pos.y < size_win.y && pos.x > 0 && pos.y > 100) {
         square_cercle(paint, pos, size);
     }
-    sfTexture *board_tex = sfTexture_createFromImage(paint->image, NULL);
-    sfSprite *board = sfSprite_create();
-    sfSprite_setTexture(board, board_tex, 0);
-    sfRenderWindow_drawSprite(paint->window, board, NULL);
-    sfTexture_destroy(board_tex);
-    sfSprite_destroy(board);
+    display_draw(paint);
     if (pos.x < size_win.x
     && pos.y < size_win.y && pos.x > 0 && pos.y > 100)
         hitbox_pixel(paint, pos, size);

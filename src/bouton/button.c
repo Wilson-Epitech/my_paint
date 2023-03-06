@@ -7,7 +7,7 @@
 
 #include "../../include/my.h"
 
-void rect_boutton(struct button_s *boutton, struct paint_t *paint, int i)
+void rect_boutton(struct button_s *boutton, int i)
 {
     int x = boutton->def_button[i][0];
     int y = boutton->def_button[i][1];
@@ -21,7 +21,7 @@ void rect_boutton(struct button_s *boutton, struct paint_t *paint, int i)
     sfRectangleShape_setOutlineThickness(boutton->rect,
     boutton->def_button[i][4]);
     sfRectangleShape_setOutlineColor(boutton->rect, boutton->outcolor);
-    sfRenderWindow_drawRectangleShape(paint->window, boutton->rect, 0);
+    sfRenderWindow_drawRectangleShape(boutton->window, boutton->rect, 0);
 }
 
 int switch_press(int i)
@@ -32,11 +32,10 @@ int switch_press(int i)
         return 1;
 }
 
-int is_touch(struct button_s *boutton,
-    struct paint_t *paint,sfEvent event, int i)
+int is_touch(struct button_s *boutton,sfEvent event, int i)
 {
-    sfVector2f pos = paint->pos;
-    sfVector2u windowSize = sfRenderWindow_getSize(paint->window);
+    sfVector2f pos = boutton->pos;
+    sfVector2u windowSize = sfRenderWindow_getSize(boutton->window);
     int h = boutton->def_button[i][2];
     int l = boutton->def_button[i][3];
     int press = boutton->def_button[i][5];
@@ -53,11 +52,10 @@ int is_touch(struct button_s *boutton,
     return 0;
 }
 
-void button(struct button_s *boutton,
-    struct paint_t *paint, sfEvent event, int i)
+void button(struct button_s *boutton, sfEvent event, int i)
 {
     boutton->color = sfColor_fromRGBA(255, 255, 255, 200);
-    int press = is_touch(boutton, paint, event, i);
+    int press = is_touch(boutton, event, i);
     if (press == 0 && boutton->def_button[i][5] == 0) {
         boutton->def_button[i][4] = 1;
         boutton->outcolor = sfBlack;
@@ -69,5 +67,5 @@ void button(struct button_s *boutton,
     if (boutton->def_button[i][5] == 1) {
         boutton->color = sfColor_fromRGBA(0, 255, 50, 255);
     }
-    rect_boutton(boutton, paint, i);
+    rect_boutton(boutton, i);
 }

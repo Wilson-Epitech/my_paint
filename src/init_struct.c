@@ -40,6 +40,7 @@ void init_struct(struct paint_t *paint, struct button_s *boutton)
     paint->size_eraser = 60;
     paint->cercle_eraser = 1;
     paint->cercle_pen = 1;
+    boutton->window = paint->window;
     set_pen(paint);
     set_eraser(paint);
 }

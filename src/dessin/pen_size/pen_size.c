@@ -7,7 +7,7 @@
 
 #include "../../../include/my.h"
 
-void size_select(struct paint_t *paint, float size)
+static void size_select(struct paint_t *paint, float size)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
     sfColor color = sfBlue;
@@ -23,7 +23,7 @@ void size_select(struct paint_t *paint, float size)
     sfRenderWindow_drawRectangleShape(paint->window, rect, 0);
 }
 
-void rect_slider(struct paint_t *paint)
+static void rect_slider(struct paint_t *paint)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
     int x = 600;

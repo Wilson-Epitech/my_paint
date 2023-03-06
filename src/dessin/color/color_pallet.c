@@ -7,7 +7,7 @@
 
 #include "../../../include/my.h"
 
-sfColor color_pallet_pt2(int nb, struct paint_t *paint, int n)
+static sfColor color_pallet_pt2(int nb, struct paint_t *paint, int n)
 {
     sfColor yanis = sfColor_fromRGB(185,138,131);
     sfColor barbapapa = sfColor_fromRGBA(254,174,201,255);
