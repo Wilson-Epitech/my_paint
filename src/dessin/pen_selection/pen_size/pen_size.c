@@ -5,7 +5,7 @@
 ** pen_size
 */
 
-#include "../../../include/my.h"
+#include "../../../../include/my.h"
 
 static void size_select(struct paint_t *paint, float size)
 {

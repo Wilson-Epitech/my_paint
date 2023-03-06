@@ -5,7 +5,7 @@
 ** color_select
 */
 
-#include "../../../include/my.h"
+#include "../../../../include/my.h"
 
 sfRectangleShape *create_back(struct paint_t *paint, int h, sfColor color)
 {

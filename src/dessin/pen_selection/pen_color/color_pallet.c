@@ -5,7 +5,7 @@
 ** color_pallet
 */
 
-#include "../../../include/my.h"
+#include "../../../../include/my.h"
 
 static sfColor color_pallet_pt2(int nb, struct pen_t *pen, int n)
 {

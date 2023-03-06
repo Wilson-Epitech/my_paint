@@ -7,9 +7,10 @@
 
 SRC	=	src/*.c	\
 	src/dessin/*.c	\
-	src/dessin/color/*.c	\
-	src/dessin/shape/*.c	\
-	src/dessin/pen_size/*.c	\
+	src/dessin/pen_selection/*.c	\
+	src/dessin/pen_selection/pen_color/*.c	\
+	src/dessin/pen_selection/pen_size/*.c	\
+	src/dessin/pen_selection/pen_shape/*.c	\
 	src/dessin/draw/*.c	\
 	src/bouton/*.c	\
 	src/sprite/*.c	\
