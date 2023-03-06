@@ -16,8 +16,9 @@ int check_pixel(float y,float x, float size, struct paint_t *paint)
     return 1;
 }
 
-void pixel(struct paint_t *paint, sfVector2f pos, float size)
+void pixel(struct paint_t *paint, struct pen_t *pen, float size)
 {
+    sfVector2f pos = paint->pos;
     int x = pos.x;
     int y = pos.y;
     size /= 2;
@@ -25,7 +26,7 @@ void pixel(struct paint_t *paint, sfVector2f pos, float size)
     while (y < pos.y + size) {
         for (x = pos.x - size; x < pos.x + size &&
         check_pixel(pos.y, pos.x, size, paint); x++) {
-            sfImage_setPixel(paint->image, x, y, paint->color_pick);
+            sfImage_setPixel(paint->image, x, y, pen->color_pick);
         }
         y++;
     }
@@ -39,7 +40,7 @@ void square_cercle(struct paint_t *paint, struct pen_t *pen, float size)
         cercle = pen->cercle_eraser;
     }
     if (cercle == 1)
-        draw_circle(paint, size);
+        draw_circle(paint, pen, size);
     else
-        pixel(paint, pos, size);
+        pixel(paint, pen, size);
 }

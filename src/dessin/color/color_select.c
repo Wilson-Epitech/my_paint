@@ -43,16 +43,16 @@ void select_gomme(struct paint_t *paint, struct pen_t *pen, sfEvent event)
     if (pos.x <= x + 33 && pos.x >= x &&
     pos.y <= y + 33 && pos.y >= y &&
     event.type == sfEvtMouseButtonPressed) {
-        paint->color_pick = color_pallet(0, pen, 0);
+        pen->color_pick = color_pallet(0, pen, 0);
     }
 }
 
-static void selected_color(struct paint_t *paint)
+static void selected_color(struct paint_t *paint, struct pen_t *pen)
 {
     sfRectangleShape_setSize(paint->color_block,
     get_position(40, 40));
     sfRectangleShape_setPosition(paint->color_block, get_position(1220, 60));
-    sfRectangleShape_setFillColor(paint->color_block, paint->color_pick);
+    sfRectangleShape_setFillColor(paint->color_block, pen->color_pick);
     sfRectangleShape_setOutlineThickness(paint->color_block, 1);
     sfRectangleShape_setOutlineColor(paint->color_block, sfBlack);
     sfRenderWindow_drawRectangleShape(paint->window, paint->color_block, 0);
@@ -72,7 +72,7 @@ void color_select(struct paint_t *paint, struct pen_t *pen, sfEvent event)
         if (pos.x <= x + 20 && pos.x >= x &&
         pos.y <= y + 20 && pos.y >= y &&
         event.type == sfEvtMouseButtonPressed) {
-            paint->color_pick = color_pallet(i, pen, 0);
+            pen->color_pick = color_pallet(i, pen, 0);
         }
         x += 30;
     }

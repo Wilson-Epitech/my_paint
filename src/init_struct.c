@@ -29,7 +29,6 @@ static void init_paint(struct paint_t *paint)
     paint->win_size = sfRenderWindow_getSize(paint->window);
     paint->back = sfRectangleShape_create();
     paint->color_block = sfRectangleShape_create();
-    paint->color_pick = sfBlack;
     paint->image = sfImage_createFromColor(1367, 718, sfWhite);
     set_pen(paint);
     set_eraser(paint);

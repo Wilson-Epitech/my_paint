@@ -9,7 +9,7 @@
 
 static void hitbox_square(struct pen_t *pen, struct paint_t *paint, float size)
 {
-    sfColor border = paint->color_pick;
+    sfColor border = pen->color_pick;
     sfVector2f pos = paint->pos;
     int size_border = 0;
     if (pen->gomme == 0) {
@@ -23,7 +23,7 @@ static void hitbox_square(struct pen_t *pen, struct paint_t *paint, float size)
     }
     sfRectangleShape *pixel = sfRectangleShape_create();
     sfRectangleShape_setSize(pixel, get_position(size, size));
-    sfRectangleShape_setFillColor(pixel, paint->color_pick);
+    sfRectangleShape_setFillColor(pixel, pen->color_pick);
     sfRectangleShape_setPosition(pixel,
     get_position(pos.x - size / 2, pos.y - size / 2));
     sfRectangleShape_setOutlineThickness(pixel,size_border);
@@ -33,7 +33,7 @@ static void hitbox_square(struct pen_t *pen, struct paint_t *paint, float size)
 
 static void hitbox_cercle(struct paint_t *paint, struct pen_t *pen, float size)
 {
-    sfColor border = paint->color_pick;
+    sfColor border = pen->color_pick;
     sfVector2f pos = paint->pos;
     int size_border = 0;
     if (pen->gomme == 0) {
@@ -47,7 +47,7 @@ static void hitbox_cercle(struct paint_t *paint, struct pen_t *pen, float size)
     }
     sfCircleShape *pixel = sfCircleShape_create();
     sfCircleShape_setRadius(pixel, size / 1.5);
-    sfCircleShape_setFillColor(pixel, paint->color_pick);
+    sfCircleShape_setFillColor(pixel, pen->color_pick);
     sfCircleShape_setPosition(pixel,
     get_position(pos.x - size / 1.5, pos.y - size / 1.5));
     sfCircleShape_setOutlineThickness(pixel,size_border);

@@ -38,14 +38,14 @@ static void call_circle_pixel(struct paint_t *paint, sfColor color, int radius)
     }
 }
 
-void draw_circle(struct paint_t *paint, int radius)
+void draw_circle(struct paint_t *paint, struct pen_t *pen, int radius)
 {
     int x = 0;
     radius /= 1.5;
     int y = radius;
     int d = 3 - 2 * radius;
-    sfColor color = paint->color_pick;
-    pixel(paint, paint->pos, radius + (radius / 2.6));
+    sfColor color = pen->color_pick;
+    pixel(paint, pen, radius + (radius / 2.6));
     while (radius > 0) {
         call_circle_pixel(paint, color, radius);
         radius--;

@@ -11,18 +11,19 @@
     #include "../include.h"
 
 struct pen_t {
+    sfColor color_pick;
     int gomme;
     float size_pen;
     float size_eraser;
     int cercle_pen;
     int cercle_eraser;
+    int id_color;
 };
 
 struct paint_t {
     sfRenderWindow *window;
     sfRectangleShape *back;
     sfRectangleShape *color_block;
-    sfColor color_pick;
     sfVector2u win_size;
     sfImage *image;
     sfVector2f pos;

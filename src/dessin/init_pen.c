@@ -9,6 +9,7 @@
 
 void init_pen(struct paint_t *paint, struct pen_t *pen)
 {
+    pen->color_pick = sfBlack;
     pen->gomme = 0;
     pen->size_pen = 20;
     pen->size_eraser = 60;
