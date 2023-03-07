@@ -43,8 +43,11 @@ int is_touch(struct button_s *boutton,sfEvent event, int i)
     pos.x >= boutton->def_button[i][0] &&
     pos.y <= boutton->def_button[i][1] + h &&
     pos.y >= boutton->def_button[i][1]) {
-        if (sfMouse_isButtonPressed(0)) {
-            boutton->def_button[i][5] = switch_press(press);
+        if (event.type == sfEvtMouseButtonPressed && press == 0) {
+            boutton->def_button[i][5] = 1;
+            return 3;
+        }
+        if (event.type == sfEvtMouseButtonPressed) {
             return 2;
         }
         return 1;
@@ -56,6 +59,10 @@ void button(struct button_s *boutton, sfEvent event, int i)
 {
     boutton->color = sfColor_fromRGBA(255, 255, 255, 200);
     int press = is_touch(boutton, event, i);
+    while (sfMouse_isButtonPressed(0) && press > 1) {
+    }
+    if (press == 2 && boutton->def_button[i][5] == 1)
+        boutton->def_button[i][5] = 0;
     if (press == 0 && boutton->def_button[i][5] == 0) {
         boutton->def_button[i][4] = 1;
         boutton->outcolor = sfBlack;
