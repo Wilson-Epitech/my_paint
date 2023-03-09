@@ -11,16 +11,16 @@ void position_boutton(struct button_s *boutton)
 {
     boutton->rect = sfRectangleShape_create();
     boutton->def_button = malloc(sizeof(int *) * 4);
-    int x = 10;
+    int x = 30;
     for (int i = 0; i < 4; i++) {
         boutton->def_button[i] = malloc(sizeof(int) * 6);
         boutton->def_button[i][0] = x;
-        boutton->def_button[i][1] = 35;
-        boutton->def_button[i][2] = 50;
-        boutton->def_button[i][3] = 100;
+        boutton->def_button[i][1] = 3;
+        boutton->def_button[i][2] = 20;
+        boutton->def_button[i][3] = 40;
         boutton->def_button[i][4] = 1;
         boutton->def_button[i][5] = 0;
-        x += 110;
+        x += 45;
     }
 }
 
