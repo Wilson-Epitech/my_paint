@@ -31,6 +31,9 @@ struct paint_t {
     int display_pixel;
     sfSprite *pen;
     sfSprite *eraser;
+    sfSprite *fleche;
+    int tool_bare;
+    int tmp;
 };
 
 #endif /* !STRUCT_DRAW_H_ */

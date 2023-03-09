@@ -15,7 +15,7 @@ static sfColor color_pallet_pt2(int nb, struct pen_t *pen, int n)
         return yanis;
     if (nb == 7)
         return barbapapa;
-    return sfBlack;
+    return sfWhite;
 }
 
 sfColor color_pallet(int nb, struct pen_t *pen, int n)
@@ -23,12 +23,12 @@ sfColor color_pallet(int nb, struct pen_t *pen, int n)
     if (nb == 0) {
         if (n == 0)
             pen->gomme = 1;
-        return sfWhite;
+        return sfBlack;
     }
     if (n == 0)
         pen->gomme = 0;
     if (nb == 1)
-        return sfBlack;
+        return sfWhite;
     if (nb == 2)
         return sfRed;
     if (nb == 3)

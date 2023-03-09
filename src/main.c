@@ -17,7 +17,7 @@ void mouse(struct paint_t *paint, struct button_s *boutton, sfEvent event)
     paint->size_win = sfRenderWindow_mapPixelToCoords(paint->window, tmp, NULL);
     if (paint->pos.x < paint->size_win.x
     && paint->pos.y < paint->size_win.y &&
-    paint->pos.x > 0 && paint->pos.y > 100) {
+    paint->pos.x > 0 && paint->pos.y > paint->tool_bare) {
         sfRenderWindow_setMouseCursorVisible(paint->window, sfFalse);
         paint->display_pixel == 0;
     } else {
@@ -36,7 +36,7 @@ void loop(struct paint_t *paint, struct button_s *boutton, sfEvent event)
         mouse(paint, boutton, event);
         close_win(paint, event);
         draw_all(paint, event, pen);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4 && paint->tool_bare == 100; i++) {
             button(boutton, event, i);
         }
         sfRenderWindow_display(paint->window);
