@@ -1,0 +1,24 @@
+/*
+** MY_PAINT PROJECT, 2023
+** my_paint
+** File description:
+** init_struct
+*/
+
+#include "../include/my.h"
+
+void init_save(struct save_t *save)
+{
+    sfVideoMode mode = { 600, 500 , 32 };
+    save->window = sfRenderWindow_create(mode, "save file (tha le flow)",
+    sfNone, NULL);
+    sfVector2i pos = {100, 100};
+    sfRenderWindow_setPosition(save->window, pos);
+    dir_sprite(save);
+    file_sprite(save);
+    save->dir_patch = "./";
+    save->enter_path = malloc(sizeof(char) * 1000);
+    save->enter_path[0] = '\0';
+    save->ext_select = 0;
+    save->extention = ".png";
+}
