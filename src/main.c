@@ -7,18 +7,16 @@
 
 #include "../include/my.h"
 
-
 int force_resize(struct paint_t *paint,  sfVector2u size_win_base)
 {
-    sfVector2u force_size_window = {768, 432};
+    sfVector2u force_size_window = {800, 600};
     sfVector2i force_pos__window = {300, 100};
-    if (sfRenderWindow_getSize(paint->window).x <= 768.f &&
+    if (sfRenderWindow_getSize(paint->window).x <= 768.f ||
     sfRenderWindow_getSize(paint->window).y <= 432.f) {
-        sfRenderWindow_setSize(paint->window, force_size_window);
-        sfRenderWindow_setPosition(paint->window, force_pos__window);
         my_putstr("\033[34m[System] minimal screen size : 1370x800\033[0m\n");
         my_putstr("\033[33m[System] auto resize on 1370x800\033[0m\n");
         sfRenderWindow_setSize(paint->window, force_size_window);
+        sfRenderWindow_setPosition(paint->window, force_pos__window);
     }
     return 0;
 }
@@ -34,7 +32,8 @@ void mouse(struct paint_t *paint, struct button_s *boutton, sfEvent event)
     force_resize(paint, size_win_base);
     if (paint->pos.x < paint->size_win.x
     && paint->pos.y < paint->size_win.y &&
-    paint->pos.x > 0 && paint->pos.y > paint->tool_bare) {
+    paint->pos.x > 0 && paint->pos.y > paint->tool_bare
+    && paint->wheel_active == 0) {
         sfRenderWindow_setMouseCursorVisible(paint->window, sfFalse);
         paint->display_pixel == 0;
     } else {
@@ -48,7 +47,7 @@ void loop(struct paint_t *paint, struct button_s *boutton, sfEvent event)
     struct pen_t *pen = malloc(sizeof(struct pen_t));
     init_pen(paint, pen);
     while (sfRenderWindow_isOpen(paint->window)) {
-        sfRenderWindow_clear(paint->window, sfWhite);
+        sfRenderWindow_clear(paint->window, sfColor_fromRGB(100,100,100));
         sfRenderWindow_pollEvent(paint->window, &event);
         mouse(paint, boutton, event);
         close_win(paint, event);
@@ -57,7 +56,7 @@ void loop(struct paint_t *paint, struct button_s *boutton, sfEvent event)
             button(boutton, event, i);
         }
         sfRenderWindow_display(paint->window);
-        menu_redir(boutton, paint);
+        menu_redir(boutton, paint, event);
     }
 }
 
@@ -70,10 +69,4 @@ int main(int argc, char **argv)
     loop(paint, boutton, event);
     fopen("./backup/backup.jpg", "w");
     sfImage_saveToFile(paint->image, "./backup/backup.jpg");
-    sfImage_destroy(paint->image);
-    sfSprite_destroy(paint->eraser);
-    sfSprite_destroy(paint->fleche);
-    sfSprite_destroy(paint->pen);
-    sfRenderWindow_destroy(paint->window);
-    free(paint);
 }

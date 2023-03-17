@@ -37,3 +37,23 @@ void set_fleche(struct paint_t *paint)
     sfSprite_setPosition(fleche, get_position(5, 5));
     paint->fleche = fleche;
 }
+
+void jour_nuit(struct paint_t *paint)
+{
+    sfSprite *fleche = sfSprite_create();
+    sfSprite_setTexture(fleche,
+    sfTexture_createFromFile("img/jour_nuit.png", NULL), 0);
+    sfSprite_setScale(fleche, get_position(0.1, 0.1));
+    sfSprite_setPosition(fleche, get_position(540,35));
+    paint->jour_nuit = fleche;
+}
+
+void zoom_sprite(struct paint_t *paint)
+{
+    sfSprite *fleche = sfSprite_create();
+    sfSprite_setTexture(fleche,
+    sfTexture_createFromFile("img/loupe.png", NULL), 0);
+    sfSprite_setScale(fleche, get_position(0.1, 0.1));
+    sfSprite_setPosition(fleche, get_position(460,35));
+    paint->zoom_sprite = fleche;
+}

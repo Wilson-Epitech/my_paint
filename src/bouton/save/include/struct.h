@@ -25,6 +25,10 @@ struct save_t {
     char *enter_path;
     int ext_select;
     char *extention;
+    int mode;
+    char *txt_mode;
+    int back_color;
+    sfSprite *retoure;
 };
 
 #endif /* !STRUCT_H_ */

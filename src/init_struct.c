@@ -19,7 +19,7 @@ void position_boutton(struct button_s *boutton)
         boutton->def_button[i][2] = 20;
         boutton->def_button[i][3] = 40;
         boutton->def_button[i][4] = 1;
-        boutton->def_button[i][5] = 1;
+        boutton->def_button[i][5] = 0;
         x += 45;
     }
 }
@@ -29,12 +29,18 @@ static void init_paint(struct paint_t *paint)
     paint->win_size = sfRenderWindow_getSize(paint->window);
     paint->back = sfRectangleShape_create();
     paint->color_block = sfRectangleShape_create();
-    paint->image = sfImage_createFromColor(1367, 718, sfBlack);
+    paint->image = sfImage_createFromColor(1367, 718,sfWhite);
     paint->tool_bare = 100;
     paint->tmp = 0;
     set_pen(paint);
     set_eraser(paint);
     set_fleche(paint);
+    paint->path_name = NULL;
+    paint->back_color = 1;
+    jour_nuit(paint);
+    zoom_sprite(paint);
+    paint->zoom = 1;
+    paint->wheel_active = 0;
 }
 
 void init_struct(struct paint_t *paint, struct button_s *boutton)
