@@ -86,4 +86,6 @@ void color_wheel(struct paint_t *paint, struct pen_t *pen, int pass)
         wheel(paint, pen);
         sfRenderWindow_setMouseCursorVisible(paint->window, true);
     }
+    sfTexture_destroy(texture);
+    sfSprite_destroy(sprite);
 }
