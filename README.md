@@ -14,7 +14,7 @@
 
 <p align="center"><img src=".github/assets/my_paint.gif" alt="My Paint" width="820"/></p>
 
-## En deux mots
+## Le projet en quelques mots
 
 Un logiciel de dessin en C avec la CSFML : crayon, gomme, formes et couleurs, avec une vraie barre d'outils et des menus.
 
@@ -25,10 +25,6 @@ Un logiciel de dessin en C avec la CSFML : crayon, gomme, formes et couleurs, av
 - Palette de couleurs et sélecteur
 - Barre de menus avec menus déroulants (fichier, aide)
 - Ouverture et sauvegarde d'images
-
-## Sous le capot
-
-Le dessin se fait dans une image CSFML mise à jour pixel par pixel sous le curseur, avec la forme et la taille du pinceau. La barre d'outils est faite de boutons génériques qui ont leur propre état (survol, actif).
 
 ## Lancer le projet
 
@@ -43,4 +39,4 @@ make
 
 Mathis Brehm, Wilson Bordichon
 
-**Ma part :** J'ai fait la **sélection des outils** (forme, taille et couleur du pinceau), le dessin des formes, les boutons génériques et le redimensionnement automatique de la fenêtre.
+**Ma partition :** J'ai fait la **sélection des outils** (forme, taille et couleur du pinceau), le dessin des formes, les boutons génériques et le redimensionnement automatique de la fenêtre.
